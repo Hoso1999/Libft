@@ -1,12 +1,14 @@
-NAME			=	libft.a
+BIN_DIR			=	bin
 
-SRCS			=	$(wildcard ./sources/*.c)
+NAME			=	$(BIN_DIR)/libft.a
 
-OBJS			=	$(SRCS:.c=.o)
+SRCS_DIR		=	sources
 
-OBJS_BASE		=	$(foreach obj, $(OBJS), $(shell basename $(obj)))
+OBJS_DIR		=	objects
 
-OBJ				=	$(addprefix objects/,$(OBJS_BASE))
+SRCS			=	$(wildcard sources/*.c)
+
+OBJS			=	$(patsubst sources/%.c, objects/%.o, $(SRCS))
 
 CC				=	gcc
 
@@ -14,27 +16,23 @@ AR				=	ar rcs
 
 INCLUDES	 	=	includes
 
-OBJS_DIR		=	./objects
-
 RM				=	rm -f
-
-BIN_DIR			=	./bin
 
 RMDIR			=	rm -rf
 
-MKDIR			=	mkdir
+MKDIR			=	mkdir -p
 
 CFLAGS			=	-Wall -Wextra -Werror -I$(INCLUDES)
 
-%.o: %.c
-					if [ ! -d $(OBJS_DIR) ]; then $(MKDIR) $(OBJS_DIR); fi
-					$(CC) $(CFLAGS) -c $< -o $(OBJS_DIR)/$(shell basename $@)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+					@if [ ! -d $(OBJS_DIR) ]; then $(MKDIR) $(OBJS_DIR); fi
+					$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):			$(OBJS) $(OBJ)
-					if [ ! -d $(BIN_DIR) ]; then $(MKDIR) $(BIN_DIR); fi
-					$(AR) $(BIN_DIR)/$(NAME) $(OBJ)
+all:				$(NAME)
 
-all:				$(NAME) 
+$(NAME):			$(OBJS)
+					@if [ ! -d $(BIN_DIR) ]; then $(MKDIR) $(BIN_DIR); fi
+					$(AR) $(NAME) $(OBJS)
 
 clean:
 					$(RMDIR) $(OBJS_DIR)
@@ -44,4 +42,4 @@ fclean:				clean
 
 re:					fclean all
 
-.PHONY:				all clean fclean re
+.PHONY:				all clean fclean re 

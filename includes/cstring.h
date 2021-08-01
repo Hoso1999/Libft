@@ -1,18 +1,14 @@
 #ifndef CSTRING_H
 #define CSTRING_H
 
-
-
-
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
 # include "ctypes.h"
 
+void				*ft_memalloc(size_t size);
 
-
-
-
+void				*ft_calloc(size_t count, size_t size);
 
 void				ft_putchar(char c);
 

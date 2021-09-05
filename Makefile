@@ -1,7 +1,8 @@
 include make.mk
-.DEFAULT_GOAL := check
 
-check:
+.DEFAULT_GOAL := clear_on_fail 
+
+clear_on_fail:
 	$(MAKE) all || $(MAKE) fclean		
 
-.PHONY: check
+.PHONY: clear_on_fail

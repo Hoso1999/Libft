@@ -76,3 +76,13 @@ void	node_swap(node_t *self, node_t *node)
 	}
 }
 
+
+void ft_node_disconnect(node_t *self)
+{
+	if (self->previous)
+		self->previous->next = self->next;
+	if (self->next)
+		self->next->previous = self->previous;
+}
+
+

@@ -7,11 +7,11 @@ node_t	*ft_node_default_constructor()
 	node = ft_memalloc(sizeof(node_t));
 	node->next = NULL;
 	node->previous = NULL;
-	node->data = NULL;
 	node->insert_after = node_insert_after;
 	node->insert_before = node_insert_before;
 	node->swap = node_swap;
 	node->reverse = node_reverse;
+	node->disconnect = ft_node_disconnect;
 	return node;
 }
 
@@ -26,10 +26,11 @@ node_t *ft_node_copy_constructor(node_t *node)
 	self->insert_before = node_insert_before;
 	self->swap = node_swap;
 	self->reverse = node_reverse;
+	self->disconnect = ft_node_disconnect;
 	return self;
 }
 
-node_t *ft_node_constructor(void *data)
+node_t *ft_node_constructor(element_t data)
 {
 	node_t *node;
 
@@ -41,6 +42,7 @@ node_t *ft_node_constructor(void *data)
 	node->insert_before = node_insert_before;
 	node->swap = node_swap;
 	node->reverse = node_reverse;
+	node->disconnect = ft_node_disconnect;
 	return node;
 }
 

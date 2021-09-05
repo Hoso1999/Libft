@@ -6,7 +6,7 @@
 /*   By: hohayrap <hohayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 21:15:32 by mgarcia-          #+#    #+#             */
-/*   Updated: 2021/08/01 15:16:49 by hohayrap         ###   ########.fr       */
+/*   Updated: 2021/08/13 21:13:06 by hohayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,44 +21,7 @@
 # include "ctypes.h"
 # include "cfstream.h"
 # include "clist.h"
-
-
-# define FT_MAX(x,y)(x > y ? x : y)
-# define FT_MIN(x,y)(x < y ? x : y)
-
-
-float				ft_fabs(float number);
-
-int					ft_abs(int number);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# include "cmath.h"
 
 
 

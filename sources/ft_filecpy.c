@@ -13,5 +13,5 @@ void	ft_filecpy(char *input_file, char *output_file, char *mode)
 	ft_get_file(file);
 	ft_set_file(file, file2, output_file, mode);
 	ft_fclose(file);
-	ft_filememdel(file);
+	ft_file_destructor(file);
 }

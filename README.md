@@ -23,12 +23,22 @@ All functions have ft_ prefix
 
 # Usage
 
+Use CMake to generate Makefile and set PATH_OF_BUILD
 ```bash
-gcc main.c -L PATH_OF_FT_LIBRARY -I PATH_OF_FT_LIBRARY/include -lft -o main
+CMake -B PATH_OF_BUILD
+```
+Run make to build lib
+```bash
+make
+```
+Add to compiler options
+```bash
+-IPATH_OF_LIBRARY/include -LPATH_OF_BUILD -lft
 ```
 
-# Examples
 
+# Examples
+main.c
 ```C
 #include "libft.h"
 

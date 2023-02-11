@@ -1,13 +1,18 @@
 #ifndef CSTRING_H
 #define CSTRING_H
 
+
+
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
 # include "ctypes.h"
-# include "cstdlib.h"
 
-size_t				ft_vecstrlen(char **str);
+
+
+
+
 
 void				ft_putchar(char c);
 
@@ -26,6 +31,8 @@ void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
 
 void				*ft_memset(void *b, int c, size_t len);
+
+void				ft_memdel(void **mem);
 
 void				ft_bzero(void *s, size_t n);
 

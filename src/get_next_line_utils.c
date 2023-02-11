@@ -6,13 +6,13 @@
 /*   By: hohayrap <hohayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 18:57:31 by hohayrap          #+#    #+#             */
-/*   Updated: 2021/08/14 15:16:38 by hohayrap         ###   ########.fr       */
+/*   Updated: 2021/07/10 17:29:17 by hohayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_zero_byte_strlen(const char *s)
+size_t	ft_gnl_strlen(const char *s)
 {
 	size_t index;
 
@@ -24,14 +24,14 @@ size_t	ft_zero_byte_strlen(const char *s)
 	return (index);
 }
 
-char	*ft_realloc_strjoin(char *s1, char *s2)
+char	*ft_gnl_strjoin(char *s1, char *s2)
 {
 	char		*new_str;
 	size_t		f_index;
 	size_t		s_index;
 
 	if (!(new_str = malloc(sizeof(char) *
-					(ft_zero_byte_strlen(s1) + ft_zero_byte_strlen(s2) + 1))))
+					(ft_gnl_strlen(s1) + ft_gnl_strlen(s2) + 1))))
 		return (NULL);
 	f_index = 0; 
 	s_index = 0;
@@ -43,11 +43,11 @@ char	*ft_realloc_strjoin(char *s1, char *s2)
 		while (s2[f_index])
 			new_str[s_index++] = s2[f_index++];
 	new_str[s_index] = '\0';
-	ft_strdel(&s1);
+	free(s1);
 	return (new_str);
 }
 
-bool		ft_findchr(const char *s, int c)
+int		ft_gnl_strchr(const char *s, int c)
 {
 	size_t	index;
 
@@ -55,8 +55,8 @@ bool		ft_findchr(const char *s, int c)
 	while (s[index])
 	{
 		if (s[index] == c)
-			return (true);
+			return (1);
 		++index;
 	}
-	return (false);
+	return (0);
 }

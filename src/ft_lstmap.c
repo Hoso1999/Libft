@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hohayrap <hohayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 21:15:32 by mgarcia-          #+#    #+#             */
-/*   Updated: 2021/08/13 21:13:06 by hohayrap         ###   ########.fr       */
+/*   Created: 2021/01/25 00:24:16 by hohayrap          #+#    #+#             */
+/*   Updated: 2021/07/25 12:04:16 by hohayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdbool.h>
-# include "cstring.h"
-# include "ctypes.h"
-# include "cfstream.h"
-# include "clist.h"
-# include "cmath.h"
+list_t	*ft_lstmap(list_t *lst, void *(*f)(void *), void (*del)(void *))
+{
+	list_t *new_element;
+	list_t *new_list;
 
-
-
-
-#endif
+	if (!lst || !f)
+		return (NULL);
+	new_list = NULL;
+	while (lst)
+	{
+		if (!(new_element = ft_lstnew(f(lst->content))))
+		{
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_list, new_element);
+		lst = lst->next;
+	}
+	return (new_list);
+}

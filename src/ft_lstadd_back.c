@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_filememdel.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hohayrap <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hohayrap <hohayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/25 11:46:12 by hohayrap          #+#    #+#             */
-/*   Updated: 2021/08/25 22:13:57 by hohayrap         ###   ########.fr       */
+/*   Created: 2021/01/25 00:18:09 by hohayrap          #+#    #+#             */
+/*   Updated: 2021/07/25 12:03:52 by hohayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_file_destructor(file_t *file)
+void	ft_lstadd_back(list_t **lst, list_t *new)
 {
-	if (!file)
+	list_t	*last;
+
+	if (!*lst)
+	{
+		*lst = new;
 		return ;
-	ft_vecstrdel(&file->content);
-	ft_memdel((void **)&file);
-	file = NULL;
+	}
+	last = ft_lstlast(*lst);
+	last->next = new;
 }

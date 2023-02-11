@@ -6,11 +6,12 @@
 /*   By: hohayrap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 22:01:55 by hohayrap          #+#    #+#             */
-/*   Updated: 2021/08/14 15:13:54 by hohayrap         ###   ########.fr       */
+/*   Updated: 2021/07/25 17:55:20 by hohayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void ft_get_file(file_t *file)
 {
@@ -23,14 +24,14 @@ void ft_get_file(file_t *file)
 	{
 		if (gnl_ret == -1)
 			return ;
-		content = ft_realloc_strjoin(content, line);
+		content = ft_gnl_strjoin(content, line);
 		ft_strdel(&line);
 		++file->rows;
 	}
 	if (!content)
 		return ;
 	ft_strdel(&line);
-	file->size = ft_zero_byte_strlen(content);
+	file->size = ft_gnl_strlen(content);
 	file->content = ft_strsplit(content, '\n');
 }
 

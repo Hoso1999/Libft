@@ -72,7 +72,11 @@ In addition to the above functions, the project also includes the following bonu
 - `getline`: Reads a line from a file descriptor.
 
 # Usage
+Clone the repository:
 
+   ```shell
+   git clone https://github.com/Hoso1999/Libft.git
+   ```
 Use CMake to generate Makefile and set PATH_OF_BUILD
 ```bash
 CMake -B PATH_OF_BUILD
